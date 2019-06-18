@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+    vim:
+        build: .
+        # image: ubuntu:16.04 
+        ports: 
+            - 9999:9999
+        tty: true
+        # volumes:
+        #    - ./:/tmp/
+

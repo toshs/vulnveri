@@ -1,0 +1,25 @@
+version: '2'
+services:
+    wordpress:
+        image: library/wordpress:4.7.0
+        ports:
+            - 10001:80
+        links:
+            - db
+        depends_on:
+            - db
+        environment:
+            WORDPRESS_DB_HOST: db:3306
+            WORDPRESS_DB_NAME: wordpress
+            WORDPRESS_DB_USER: vuln
+            WORDPRESS_DB_PASSWORD: vuln
+
+    db:
+        image: mysql:5.7
+        environment:
+            MYSQL_DATABASE: wordpress
+            MYSQL_USER: vuln
+            MYSQL_PASSWORD: vuln
+            MYSQL_RANDOM_ROOT_PASSWORD: '1'
+            #MYSQL_ROOT_PASSWORD: secret
+
